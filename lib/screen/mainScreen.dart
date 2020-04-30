@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:sharesns/screen/firstScreen.dart';
+import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customSwiper.dart';
 
 //TODO: Login / Registration Page
@@ -47,18 +48,11 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-//      floatingActionButton: FloatingActionButton(
-//        child: Icon(
-//          Icons.share,
-//          color: Colors.black,
-//        ),
-//        backgroundColor: Colors.white,
-//        onPressed: () => print("Clicked"),
-//      ),
       body: Column(
         children: [
           Expanded(
             child: Container(
+              padding: EdgeInsets.only(top: 10.0),
               child: Center(
                 child: Swiper(
                   itemBuilder: (BuildContext context, int index) {
@@ -103,40 +97,24 @@ class _MainScreenState extends State<MainScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.black),
-                    ),
-                    color: Colors.black,
-                    child: Text(
-                      "Add",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
+                  child: CircularButton(
+                    title: "Add",
+                    fontColor: Colors.white,
                     onPressed: () {
-                      print(this.index);
+                      print("Add ${this.index}");
                     },
-                  ),
+                  )
                 ),
                 SizedBox(
                   width: 5.0,
                 ),
                 Expanded(
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.black),
-                    ),
+                  child: CircularButton(
+                    title: "Share",
                     color: Colors.white,
-                    child: Text(
-                      "Share",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
                     onPressed: () {
-                      print(this.index);
-                    },
+                      print("Share ${this.index}");
+                    }
                   ),
                 ),
               ],
