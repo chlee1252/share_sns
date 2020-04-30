@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/screen/mainScreen.dart';
+import 'package:sharesns/screen/passwordScreen.dart';
 import 'package:sharesns/widget/customInput.dart';
 import 'package:sharesns/widget/cardButton.dart';
 
@@ -59,7 +60,18 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () {
                 Navigator.pushReplacementNamed(context, FirstScreen.id);
               },
-            )
+            ),
+            FlatButton(
+              child: Text(
+                "Forgot Password?",
+                style: TextStyle(
+                  color: Colors.blue,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, PasswordScreen.id);
+              },
+            ),
           ],
         ),
       ),
