@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Center(
               child: Text(
-                "IntaShare",
+                "InstaShare",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30.0,
