@@ -21,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
     "asset/instagram.jpeg",
     "asset/kakao.jpeg"
   ];
+  var index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,14 +37,9 @@ class _MainScreenState extends State<MainScreen> {
         ),
         actions: [
           FlatButton(
-            child: Card(
-              elevation: 3.0,
-              shadowColor: Colors.black,
-              color: Colors.black,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Logout", style: TextStyle(color: Colors.white, fontSize: 20.0),),
-              ),
+            child: Text(
+              "Logout",
+              style: TextStyle(color: Colors.black, fontSize: 20.0),
             ),
             onPressed: () {
               Navigator.pushReplacementNamed(context, FirstScreen.id);
@@ -51,48 +47,102 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.share,
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.white,
-        onPressed: () => print("Clicked"),
-      ),
-      body: Swiper(
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            elevation: 3.0,
-            clipBehavior: Clip.antiAlias,
-            shadowColor: Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15.0),
-              child: Image.asset(
-                images[index],
-                fit: BoxFit.fill,
+//      floatingActionButton: FloatingActionButton(
+//        child: Icon(
+//          Icons.share,
+//          color: Colors.black,
+//        ),
+//        backgroundColor: Colors.white,
+//        onPressed: () => print("Clicked"),
+//      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              child: Center(
+                child: Swiper(
+                  itemBuilder: (BuildContext context, int index) {
+                    this.index = index;
+                    return Card(
+                      elevation: 3.0,
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image.asset(
+                          images[index],
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    );
+                  },
+                  scale: 0.5,
+                  viewportFraction: 0.5,
+                  itemWidth: MediaQuery.of(context).size.width * 0.8,
+                  pagination: SwiperPagination(
+                    builder: SwiperCustomPagination(
+                      builder:
+                          (BuildContext context, SwiperPluginConfig config) {
+                        return CustomSwiper(
+                          config: config,
+                        );
+                      },
+                    ),
+                  ),
+                  itemCount: 3,
+                  layout: SwiperLayout.STACK,
+                ),
               ),
             ),
-          );
-        },
-        scale: 0.5,
-        viewportFraction: 0.5,
-        itemHeight: MediaQuery.of(context).size.height * 0.40,
-        itemWidth: MediaQuery.of(context).size.width,
-        pagination: SwiperPagination(
-          margin: EdgeInsets.all(8.0),
-          builder: SwiperCustomPagination(
-            builder: (BuildContext context, SwiperPluginConfig config) {
-              return CustomSwiper(
-                config: config,
-              );
-            },
           ),
-        ),
-        itemCount: 3,
-        layout: SwiperLayout.TINDER,
+          Container(
+            padding: EdgeInsets.all(8.0),
+            height: MediaQuery.of(context).size.height * 0.2,
+            child: Row(
+              children: [
+                Expanded(
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black),
+                    ),
+                    color: Colors.black,
+                    child: Text(
+                      "Add",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      print(this.index);
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: 5.0,
+                ),
+                Expanded(
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      "Share",
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      print(this.index);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
