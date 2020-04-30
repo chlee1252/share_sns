@@ -4,7 +4,8 @@ import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customSwiper.dart';
 
-//TODO: Login / Registration Page
+import 'addScreen.dart';
+
 //TODO: Add Account Page
 //TODO: Firebase
 //TODO: NFC Connect
@@ -101,7 +102,7 @@ class _MainScreenState extends State<MainScreen> {
                     title: "Add",
                     fontColor: Colors.white,
                     onPressed: () {
-                      print("Add ${this.index}");
+                      Navigator.pushNamed(context, AddScreen.id);
                     },
                   )
                 ),

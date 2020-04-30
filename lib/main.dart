@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sharesns/screen/addScreen.dart';
 import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/screen/loginScreen.dart';
 import 'package:sharesns/screen/mainScreen.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         FirstScreen.id: (context) => FirstScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         RegisterScreen.id: (context) => RegisterScreen(),
+        AddScreen.id: (context) => AddScreen(),
       },
     );
   }
