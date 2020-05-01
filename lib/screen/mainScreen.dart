@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customSwiper.dart';
-
-import 'addScreen.dart';
+import 'package:sharesns/screen/addScreen.dart';
+import 'package:sharesns/widget/myDialog.dart';
 
 //TODO: Add Account Page
 //TODO: Firebase or LocalStorage for offline service?
@@ -23,7 +24,19 @@ class _MainScreenState extends State<MainScreen> {
     "asset/instagram.jpeg",
     "asset/kakao.jpeg"
   ];
+  bool _supportNFC = false;
   var index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    NFC.isNDEFSupported.then((bool isSupported) {
+      setState(() {
+        _supportNFC = isSupported;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,6 +127,9 @@ class _MainScreenState extends State<MainScreen> {
                     title: "Share",
                     color: Colors.white,
                     onPressed: () {
+                      if (!_supportNFC) {
+                        closeButtonDialog(context: context, title: "NO NFC SUPPORT", content: "Your device does not support NFC");
+                      }
                       print("Share ${this.index}");
                     }
                   ),
