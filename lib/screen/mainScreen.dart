@@ -7,7 +7,7 @@ import 'package:sharesns/widget/customSwiper.dart';
 import 'addScreen.dart';
 
 //TODO: Add Account Page
-//TODO: Firebase
+//TODO: Firebase or LocalStorage for offline service?
 //TODO: NFC Connect
 //TODO: Facebook API / KakaoTalk API to get account profile
 
