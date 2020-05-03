@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:nfc_in_flutter/nfc_in_flutter.dart';
+import 'package:sharesns/nfc/nfcRead.dart';
 import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customSwiper.dart';
@@ -70,7 +71,6 @@ class _MainScreenState extends State<MainScreen> {
               child: Center(
                 child: Swiper(
                   itemBuilder: (BuildContext context, int index) {
-                    this.index = index;
                     return Card(
                       elevation: 3.0,
                       clipBehavior: Clip.antiAlias,
@@ -85,6 +85,12 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                     );
+                  },
+                  onIndexChanged: (index) {
+                    print(index);
+                    setState(() {
+                      this.index = index;
+                    });
                   },
                   scale: 0.5,
                   viewportFraction: 0.5,
@@ -111,28 +117,35 @@ class _MainScreenState extends State<MainScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: CircularButton(
-                    title: "Add",
-                    fontColor: Colors.white,
-                    onPressed: () {
-                      Navigator.pushNamed(context, AddScreen.id);
-                    },
-                  )
-                ),
+                    child: CircularButton(
+                  title: "Add",
+                  fontColor: Colors.white,
+                  onPressed: () {
+                    NFCRead.start();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return AddScreen(index: this.index);
+                      }),
+                    );
+                  },
+                )),
                 SizedBox(
                   width: 5.0,
                 ),
                 Expanded(
                   child: CircularButton(
-                    title: "Share",
-                    color: Colors.white,
-                    onPressed: () {
-                      if (!_supportNFC) {
-                        closeButtonDialog(context: context, title: "NO NFC SUPPORT", content: "Your device does not support NFC");
-                      }
-                      print("Share ${this.index}");
-                    }
-                  ),
+                      title: "Share",
+                      color: Colors.white,
+                      onPressed: () {
+                        if (!_supportNFC) {
+                          closeButtonDialog(
+                              context: context,
+                              title: "NO NFC SUPPORT",
+                              content: "Your device does not support NFC");
+                        }
+                        print("Share ${this.index}");
+                      }),
                 ),
               ],
             ),
