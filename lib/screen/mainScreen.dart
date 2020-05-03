@@ -5,6 +5,7 @@ import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 import 'package:sharesns/nfc/nfcRead.dart';
 import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/widget/circularButton.dart';
+import 'package:sharesns/widget/customFlipCard.dart';
 import 'package:sharesns/widget/customSwiper.dart';
 import 'package:sharesns/screen/addScreen.dart';
 import 'package:sharesns/widget/myDialog.dart';
@@ -12,7 +13,7 @@ import 'package:sharesns/widget/ssnCard.dart';
 
 //TODO: Add Account Page
 //TODO: Firebase or LocalStorage for offline service?
-//TODO: NFC Connect
+//TODO: NFC Connect (I don't think it is possible for iOS)
 //TODO: Facebook API / KakaoTalk API to get account profile
 
 class MainScreen extends StatefulWidget {
@@ -73,31 +74,9 @@ class _MainScreenState extends State<MainScreen> {
               child: Center(
                 child: Swiper(
                   itemBuilder: (BuildContext context, int index) {
-                    return FlipCard(
-                      direction: FlipDirection.HORIZONTAL,
-                      speed: 500,
-                      front: SSNCard(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.asset(
-                            images[index],
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      back: SSNCard(
-                        child: Container(
-                          child: Center(
-                            child: Text(
-                              "Account",
-                              style: TextStyle(
-                                fontSize: 30.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                    return CustomFlipCard(
+                      imageSrc: images[index],
+                      account: "Account",
                     );
                   },
                   onIndexChanged: (index) {
