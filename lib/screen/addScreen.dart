@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sharesns/widget/cardButton.dart';
-
-import 'package:sharesns/screen/mainScreen.dart';
 import 'package:sharesns/widget/customInput.dart';
 
 //TODO: Add Screen design and implement
@@ -45,7 +43,7 @@ class _AddScreenState extends State<AddScreen> {
           CardButton(
             title: "Cancel",
             onPressed: () {
-              Navigator.pushReplacementNamed(context, MainScreen.id);
+              Navigator.pop(context);
             },
             color: Colors.grey,
           ),

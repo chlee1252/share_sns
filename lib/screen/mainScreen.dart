@@ -87,7 +87,6 @@ class _MainScreenState extends State<MainScreen> {
                     );
                   },
                   onIndexChanged: (index) {
-                    print(index);
                     setState(() {
                       this.index = index;
                     });
@@ -122,7 +121,7 @@ class _MainScreenState extends State<MainScreen> {
                   fontColor: Colors.white,
                   onPressed: () {
                     NFCRead.start();
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
                         return AddScreen(index: this.index);
