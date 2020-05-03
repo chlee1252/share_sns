@@ -1,3 +1,4 @@
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:nfc_in_flutter/nfc_in_flutter.dart';
@@ -7,6 +8,7 @@ import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customSwiper.dart';
 import 'package:sharesns/screen/addScreen.dart';
 import 'package:sharesns/widget/myDialog.dart';
+import 'package:sharesns/widget/ssnCard.dart';
 
 //TODO: Add Account Page
 //TODO: Firebase or LocalStorage for offline service?
@@ -71,17 +73,29 @@ class _MainScreenState extends State<MainScreen> {
               child: Center(
                 child: Swiper(
                   itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      elevation: 3.0,
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                    return FlipCard(
+                      direction: FlipDirection.HORIZONTAL,
+                      speed: 500,
+                      front: SSNCard(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            images[index],
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        child: Image.asset(
-                          images[index],
-                          fit: BoxFit.fill,
+                      back: SSNCard(
+                        child: Container(
+                          child: Center(
+                            child: Text(
+                              "Account",
+                              style: TextStyle(
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     );
