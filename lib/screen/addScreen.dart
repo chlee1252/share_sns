@@ -22,24 +22,32 @@ class _AddScreenState extends State<AddScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Text(this.title_list[widget.index], style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),),
+            child: Text(
+              this.title_list[widget.index],
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          SizedBox(height: 20.0,),
+          SizedBox(
+            height: 20.0,
+          ),
           CustomInput(
-            hintText: "Please type your ${this.title_list[widget.index]} account",
+            hintText:
+                "Please type your ${this.title_list[widget.index]} account",
             borderColor: Colors.black,
             onChanged: (value) {
               print(value);
             },
           ),
           CardButton(
-            title: "Add",
-            onPressed: () {
-              //TODO: Add to Firebase or emulate to NFC
-              print(title_list[widget.index]);
-            },
-            color: Colors.black
-          ),
+              title: "Add",
+              onPressed: () {
+                //TODO: Add to Firebase or emulate to NFC
+                print(title_list[widget.index]);
+              },
+              color: Colors.black),
           CardButton(
             title: "Cancel",
             onPressed: () {
