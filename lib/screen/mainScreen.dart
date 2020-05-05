@@ -27,12 +27,12 @@ class _MainScreenState extends State<MainScreen> {
     "",
   ];
   var titleList = ["Facebook", "Instagram", "Snapchat"];
-  var index = 0;
+  var list = [];
+  var index;
 
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -96,8 +96,14 @@ class _MainScreenState extends State<MainScreen> {
                   child: CircularButton(
                     title: "Add",
                     fontColor: Colors.white,
-                    onPressed: () {
-                     showSlideDialog(context);
+                    onPressed: () async {
+                      await showSlideDialog(context).then((value) {
+                        setState(() {
+                          if (value != null) {
+                            print(value);
+                          }
+                        });
+                      });
                     },
                   ),
                 ),
@@ -106,17 +112,15 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 Expanded(
                   child: CircularButton(
-                      title: "Share",
-                      color: Colors.white,
-                      onPressed: () {
-//                        if (!_supportNFC) {
-//                          closeButtonDialog(
-//                              context: context,
-//                              title: "NO NFC SUPPORT",
-//                              content: "Your device does not support NFC");
-//                        }
-                        print("Share ${this.index}");
-                      }),
+                    title: "Share",
+                    color: Colors.white,
+                    onPressed: this.index == null
+                        ? null
+                        : () {
+                            // TODO: QR Reader
+                            print("Share ${this.index}");
+                          },
+                  ),
                 ),
               ],
             ),

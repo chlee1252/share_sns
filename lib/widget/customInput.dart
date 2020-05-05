@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
-  CustomInput({this.hintText, this.borderColor, this.obscureText=false, this.onChanged});
+  CustomInput({this.controller, this.hintText, this.borderColor, this.obscureText=false, this.onChanged});
 
+  final TextEditingController controller;
   final String hintText;
   final Color borderColor;
   final bool obscureText;
@@ -15,6 +16,7 @@ class CustomInput extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         height: 45.0,
         child: TextField(
+          controller: this.controller,
           obscureText: this.obscureText,
           onChanged: this.onChanged,
           decoration: InputDecoration(
