@@ -9,16 +9,16 @@ class Data {
       "image": "asset/instagram.jpeg",
     },
     "Phone": {
-      "deeplink": "",
-      "image": "",
+      "deeplink": "tel:",
+      "image": "asset/phone.png",
     },
     "Email": {
-      "deeplink": "",
-      "image": "",
+      "deeplink": "mailto:",
+      "image": "asset/email.jpeg",
     },
     "Snapchat": {
       "deeplink": "snapchat://add/",
-      "image": "asset/kakao.jpeg",
+      "image": "asset/snapchat.jpeg",
     },
   };
 }
