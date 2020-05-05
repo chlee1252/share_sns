@@ -6,9 +6,12 @@ import 'package:sharesns/widget/customFlipCard.dart';
 import 'package:sharesns/widget/customSwiper.dart';
 import 'package:sharesns/widget/slidePop.dart';
 
-//TODO: Add Account Page
-//TODO: Firebase or LocalStorage for offline service?
-//TODO: Facebook API / KakaoTalk API to get account profile
+//TODO: Local Storage Support
+//TODO: QR Code Scanner
+//TODO: Tutorial Screen
+//TODO: APIs (Especially Facebook)
+//TODO: Email Validation
+//TODO: All Share Method
 
 class MainScreen extends StatefulWidget {
   static final String id = "MainScreen";
