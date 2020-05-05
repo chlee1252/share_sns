@@ -1,8 +1,9 @@
-class DeepLinks {
-  static const deeplinks = {
+class Data {
+  static const SNSData = {
     "Facebook": "fb://profile?id=",
     "Instagram": "instagram://user?username=",
-    "KakaoTalk": "",
+    "Phone": "",
+    "Email": "",
     "Snapchat": "snapchat://add/",
   };
 }

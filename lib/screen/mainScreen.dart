@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:sharesns/nfc/nfcRead.dart';
+import 'package:sharesns/screen/chooseScreen.dart';
 import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customFlipCard.dart';
@@ -9,7 +10,6 @@ import 'package:sharesns/screen/addScreen.dart';
 
 //TODO: Add Account Page
 //TODO: Firebase or LocalStorage for offline service?
-//TODO: NFC Connect (I don't think it is possible for iOS)
 //TODO: Facebook API / KakaoTalk API to get account profile
 
 class MainScreen extends StatefulWidget {
@@ -24,17 +24,18 @@ class _MainScreenState extends State<MainScreen> {
     "asset/instagram.jpeg",
     "asset/kakao.jpeg"
   ];
-//  bool _supportNFC = false;
+  List account = [
+    "changhwan.lee.71",
+    "chlee1127",
+    "",
+  ];
+  var titleList = ["Facebook", "Instagram", "Snapchat"];
   var index = 0;
 
   @override
   void initState() {
     super.initState();
-//    NFC.isNDEFSupported.then((bool isSupported) {
-//      setState(() {
-//        _supportNFC = isSupported;
-//      });
-//    });
+
   }
 
   @override
@@ -72,7 +73,8 @@ class _MainScreenState extends State<MainScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     return CustomFlipCard(
                       imageSrc: images[index],
-                      account: "Account",
+                      title: this.titleList[index],
+                      account: this.account[index],
                     );
                   },
                   onIndexChanged: (index) {
@@ -113,7 +115,7 @@ class _MainScreenState extends State<MainScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) {
-                          return AddScreen(index: this.index);
+                          return ChooseScreen();
                         }),
                       );
                     },

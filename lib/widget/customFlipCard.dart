@@ -1,13 +1,15 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:sharesns/widget/ssnCard.dart';
+import 'package:sharesns/sns/snsData.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class CustomFlipCard extends StatelessWidget {
-  CustomFlipCard({this.imageSrc, this.account=""});
+  CustomFlipCard({this.imageSrc, this.account="", this.title});
 
   final String imageSrc;
   final String account;
+  final String title;
   @override
   Widget build(BuildContext context) {
     // fb://profile?id={}
@@ -30,7 +32,7 @@ class CustomFlipCard extends StatelessWidget {
         child: Container(
           child: Center(
             child: QrImage(
-              data: "kakaolink://add",
+              data: "${Data.SNSData[title]}$account",
               version: QrVersions.auto,
               size: 200,
             ),

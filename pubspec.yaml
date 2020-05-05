@@ -32,6 +32,7 @@ dependencies:
   nfc_in_flutter: ^2.0.4
   flip_card: ^0.4.4
   qr_flutter: ^3.2.0
+  localstorage: ^3.0.1+4
 
 
 dev_dependencies:
