@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:sharesns/nfc/nfcRead.dart';
-import 'package:sharesns/screen/chooseScreen.dart';
 import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customFlipCard.dart';
 import 'package:sharesns/widget/customSwiper.dart';
 import 'package:sharesns/screen/addScreen.dart';
+import 'package:sharesns/widget/slidePop.dart';
 
 //TODO: Add Account Page
 //TODO: Firebase or LocalStorage for offline service?
@@ -111,13 +111,7 @@ class _MainScreenState extends State<MainScreen> {
                     title: "Add",
                     fontColor: Colors.white,
                     onPressed: () {
-                      NFCRead.start();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return ChooseScreen();
-                        }),
-                      );
+                     showSlideDialog(context);
                     },
                   ),
                 ),

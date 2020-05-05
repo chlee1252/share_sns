@@ -2,25 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:sharesns/screen/addScreen.dart';
 import 'package:sharesns/sns/snsData.dart';
 
-class ChooseScreen extends StatefulWidget {
-  @override
-  _ChooseScreenState createState() => _ChooseScreenState();
-}
+import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 
-class _ChooseScreenState extends State<ChooseScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Choose SNS"),
-      ),
-      body: ListView.builder(
+void showSlideDialog(BuildContext context) {
+  slideDialog.showSlideDialog(
+    context: context,
+    child: Expanded(
+      child: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
             final current = Data.SNSData.keys.elementAt(index);
             return Container(
               height: 80,
               child: Card(
-                color: Colors.grey,
+                color: Colors.white70,
                 elevation: 3.0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
@@ -28,7 +22,7 @@ class _ChooseScreenState extends State<ChooseScreen> {
                 child: ListTile(
                   title: Center(child: Text(current)),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
                       return AddScreen(title: current,);
                     }));
                   },
@@ -37,6 +31,6 @@ class _ChooseScreenState extends State<ChooseScreen> {
             );
           },
           itemCount: Data.SNSData.length),
-    );
-  }
+    ),
+  );
 }
