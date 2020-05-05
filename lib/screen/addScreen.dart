@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sharesns/module/userData.dart';
+import 'package:sharesns/sns/snsData.dart';
 import 'package:sharesns/widget/cardButton.dart';
 import 'package:sharesns/widget/customInput.dart';
 
@@ -21,6 +23,7 @@ class _AddScreenState extends State<AddScreen> {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,15 +45,21 @@ class _AddScreenState extends State<AddScreen> {
             ),
             CustomInput(
               controller: _controller,
-              hintText:
-                  "Please type your ${widget.title} account",
+              hintText: "Please type your ${widget.title} account",
               borderColor: Colors.black,
             ),
             CardButton(
                 title: "Add",
                 onPressed: () {
                   if (_controller.text.length != 0) {
-                    Navigator.pop(context, _controller.text);
+                    var sns = Data.SNSData[widget.title];
+                    var userData = UserData(
+                      imageSrc: sns['image'],
+                      title: widget.title,
+                      deepLink: sns['deeplink'],
+                      account: _controller.text,
+                    );
+                    Navigator.pop(context, userData);
                   }
                 },
                 color: Colors.black),

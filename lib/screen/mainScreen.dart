@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:sharesns/module/userData.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customFlipCard.dart';
 import 'package:sharesns/widget/customSwiper.dart';
@@ -16,18 +17,18 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List images = [
-    "asset/facebook.jpeg",
-    "asset/instagram.jpeg",
-    "asset/kakao.jpeg"
-  ];
-  List account = [
-    "changhwan.lee.71",
-    "chlee1127",
-    "",
-  ];
-  var titleList = ["Facebook", "Instagram", "Snapchat"];
-  var list = [];
+//  List images = [
+//    "asset/facebook.jpeg",
+//    "asset/instagram.jpeg",
+//    "asset/kakao.jpeg"
+//  ];
+//  List account = [
+//    "changhwan.lee.71",
+//    "chlee1127",
+//    "",
+//  ];
+//  var titleList = ["Facebook", "Instagram", "Snapchat"];
+  var list = {};
   var index;
 
   @override
@@ -52,40 +53,46 @@ class _MainScreenState extends State<MainScreen> {
       body: Column(
         children: [
           Expanded(
-            child: Container(
-              padding: EdgeInsets.only(top: 10.0),
-              child: Center(
-                child: Swiper(
-                  itemBuilder: (BuildContext context, int index) {
-                    return CustomFlipCard(
-                      imageSrc: images[index],
-                      title: this.titleList[index],
-                      account: this.account[index],
-                    );
-                  },
-                  onIndexChanged: (index) {
-                    setState(() {
-                      this.index = index;
-                    });
-                  },
-                  scale: 0.5,
-                  viewportFraction: 0.5,
-                  itemWidth: MediaQuery.of(context).size.width * 0.8,
-                  pagination: SwiperPagination(
-                    builder: SwiperCustomPagination(
-                      builder:
-                          (BuildContext context, SwiperPluginConfig config) {
-                        return CustomSwiper(
-                          config: config,
-                        );
-                      },
+            child: list.isEmpty
+                ? Center(
+                    child: Text("Empty"),
+                  )
+                : Container(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Center(
+                      child: Swiper(
+                        itemBuilder: (BuildContext context, int index) {
+                          final current = list[list.keys.elementAt(index)];
+                          return CustomFlipCard(
+                            imageSrc: current.imageSrc,
+                            title: current.title,
+                            account: current.account,
+                            deepLink: current.deepLink,
+                          );
+                        },
+                        onIndexChanged: (index) {
+                          setState(() {
+                            this.index = index;
+                          });
+                        },
+                        scale: 0.5,
+                        viewportFraction: 0.5,
+                        itemWidth: MediaQuery.of(context).size.width * 0.8,
+                        pagination: SwiperPagination(
+                          builder: SwiperCustomPagination(
+                            builder: (BuildContext context,
+                                SwiperPluginConfig config) {
+                              return CustomSwiper(
+                                config: config,
+                              );
+                            },
+                          ),
+                        ),
+                        itemCount: list.length,
+                        layout: SwiperLayout.STACK,
+                      ),
                     ),
                   ),
-                  itemCount: 3,
-                  layout: SwiperLayout.STACK,
-                ),
-              ),
-            ),
           ),
           Container(
             padding: EdgeInsets.all(8.0),
@@ -100,7 +107,7 @@ class _MainScreenState extends State<MainScreen> {
                       await showSlideDialog(context).then((value) {
                         setState(() {
                           if (value != null) {
-                            print(value);
+                            list[value.title] = value;
                           }
                         });
                       });
