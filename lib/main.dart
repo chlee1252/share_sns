@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sharesns/screen/addScreen.dart';
-import 'package:sharesns/screen/firstScreen.dart';
-import 'package:sharesns/screen/loginScreen.dart';
 import 'package:sharesns/screen/mainScreen.dart';
-import 'package:sharesns/screen/passwordScreen.dart';
-import 'package:sharesns/screen/registerScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,15 +14,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: FirstScreen(),
-      initialRoute: FirstScreen.id,
+      home: MainScreen(),
+      initialRoute: MainScreen.id,
       routes: {
         MainScreen.id: (context) => MainScreen(),
-        FirstScreen.id: (context) => FirstScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-        RegisterScreen.id: (context) => RegisterScreen(),
         AddScreen.id: (context) => AddScreen(),
-        PasswordScreen.id: (context) => PasswordScreen(),
       },
     );
   }

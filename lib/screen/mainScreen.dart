@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:sharesns/screen/firstScreen.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customFlipCard.dart';
 import 'package:sharesns/widget/customSwiper.dart';
@@ -49,17 +48,6 @@ class _MainScreenState extends State<MainScreen> {
             fontSize: 30.0,
           ),
         ),
-        actions: [
-          FlatButton(
-            child: Text(
-              "Logout",
-              style: TextStyle(color: Colors.black, fontSize: 20.0),
-            ),
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, FirstScreen.id);
-            },
-          ),
-        ],
       ),
       body: Column(
         children: [

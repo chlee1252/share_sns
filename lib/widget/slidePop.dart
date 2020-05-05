@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sharesns/screen/addScreen.dart';
 import 'package:sharesns/sns/snsData.dart';
-
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 
 void showSlideDialog(BuildContext context) {
