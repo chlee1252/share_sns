@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:sharesns/module/userData.dart';
+import 'package:sharesns/storage/storage.dart';
 import 'package:sharesns/widget/circularButton.dart';
 import 'package:sharesns/widget/customFlipCard.dart';
 import 'package:sharesns/widget/customSwiper.dart';
@@ -17,23 +17,18 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-//  List images = [
-//    "asset/facebook.jpeg",
-//    "asset/instagram.jpeg",
-//    "asset/kakao.jpeg"
-//  ];
-//  List account = [
-//    "changhwan.lee.71",
-//    "chlee1127",
-//    "",
-//  ];
-//  var titleList = ["Facebook", "Instagram", "Snapchat"];
   var list = {};
   var index;
+//  Storage storage = new Storage();
 
   @override
   void initState() {
     super.initState();
+//    storage.isReady().then((data) {
+//      setState(() {
+//        data ? list = storage.getItem() : list = {};
+//      });
+//    });
   }
 
   @override
@@ -108,6 +103,7 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           if (value != null) {
                             list[value.title] = value;
+//                            storage.setItem(list);
                           }
                         });
                       });
@@ -126,6 +122,7 @@ class _MainScreenState extends State<MainScreen> {
                         : () {
                             // TODO: QR Reader
                             print("Share ${this.index}");
+//                            print(storage.toJSON(this.list));
                           },
                   ),
                 ),

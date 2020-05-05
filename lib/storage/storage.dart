@@ -1,4 +1,5 @@
 import 'package:localstorage/localstorage.dart';
+import 'package:sharesns/module/userData.dart';
 
 class Storage {
   LocalStorage storage = LocalStorage('instaShare.json');
@@ -8,14 +9,26 @@ class Storage {
     return ready;
   }
 
+  toJSON(Map<String, UserData> item) {
+    Map hash = Map();
+    item.forEach((k, v) {
+      hash[k] = v.toJSON();
+    });
+    return hash;
+  }
+
   setItem(item) {
-    storage.setItem('InstaShare_item', item);
+    var newItem = toJSON(item);
+    storage.setItem('InstaShare_item', newItem);
   }
 
   getItem() {
-    final item = storage.getItem('item');
-
-    return item;
+    Map result = {};
+    final item = storage.getItem('InstaShare_item');
+    if (item != null) {
+      print(item);
+    }
+    return result;
   }
 
 }

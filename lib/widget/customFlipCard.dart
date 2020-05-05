@@ -12,10 +12,6 @@ class CustomFlipCard extends StatelessWidget {
   final String deepLink;
   @override
   Widget build(BuildContext context) {
-    // fb://profile?id={}
-    // instagram://user?username={}
-    // kakaolink://user
-    // snapchat://add
     return FlipCard(
       direction: FlipDirection.HORIZONTAL,
       speed: 500,
