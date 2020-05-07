@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:sharesns/module/userData.dart';
 import 'package:sharesns/sns/snsData.dart';
@@ -17,6 +18,7 @@ class AddScreen extends StatefulWidget {
 class _AddScreenState extends State<AddScreen> {
   TextEditingController _controller = TextEditingController();
   String result;
+  bool isError = false;
 
   @override
   void dispose() {
@@ -47,19 +49,26 @@ class _AddScreenState extends State<AddScreen> {
               controller: _controller,
               hintText: "Please type your ${widget.title} account",
               borderColor: Colors.black,
+              isError: this.isError,
             ),
             CardButton(
                 title: "Add",
                 onPressed: () {
-                  if (_controller.text.length != 0) {
-                    var sns = Data.SNSData[widget.title];
-                    var userData = UserData(
-                      imageSrc: sns['image'],
-                      title: widget.title,
-                      deepLink: sns['deeplink'],
-                      account: _controller.text,
-                    );
-                    Navigator.pop(context, userData);
+                  if (widget.title == "Email" && !EmailValidator.validate(_controller.text)) {
+                      setState(() {
+                        this.isError = true;
+                      });
+                  } else {
+                    if (_controller.text.length != 0) {
+                      var sns = Data.SNSData[widget.title];
+                      var userData = UserData(
+                        imageSrc: sns['image'],
+                        title: widget.title,
+                        deepLink: sns['deeplink'],
+                        account: _controller.text,
+                      );
+                      Navigator.pop(context, userData);
+                    }
                   }
                 },
                 color: Colors.black),
