@@ -18,8 +18,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  var list = {};
-  var index;
+  Map list = {};
+  int index;
   bool tutorial = true;
   Storage storage = new Storage();
 
@@ -29,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     storage.isReady().then((data) {
       setState(() {
         data ? list = storage.getItem() : list = {};
+        if (list.isNotEmpty) index = 0;
       });
     });
   }
@@ -50,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
       body: Column(
         children: [
           Expanded(
-            child: list.isEmpty
+            child: this.list.isEmpty
                 ? Center(
                     child: Text("Empty"),
                   )
@@ -125,6 +126,7 @@ class _MainScreenState extends State<MainScreen> {
                         : () {
                             // TODO: QR Reader
                             print("Share ${this.index}");
+                            storage.clearItem();
                           },
                   ),
                 ),
