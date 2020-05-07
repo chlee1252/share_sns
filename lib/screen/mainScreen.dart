@@ -10,7 +10,6 @@ import 'package:sharesns/widget/slidePop.dart';
 //TODO: QR Code Scanner
 //TODO: Tutorial Screen
 //TODO: APIs (Especially Facebook)
-//TODO: Email Validation
 //TODO: All Share Method
 
 class MainScreen extends StatefulWidget {
@@ -22,11 +21,13 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   var list = {};
   var index;
-//  Storage storage = new Storage();
+  bool tutorial = true;
+  Storage storage = new Storage();
 
   @override
   void initState() {
     super.initState();
+
 //    storage.isReady().then((data) {
 //      setState(() {
 //        data ? list = storage.getItem() : list = {};
