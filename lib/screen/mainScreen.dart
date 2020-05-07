@@ -6,7 +6,6 @@ import 'package:sharesns/widget/customFlipCard.dart';
 import 'package:sharesns/widget/customSwiper.dart';
 import 'package:sharesns/widget/slidePop.dart';
 
-//TODO: Local Storage Support
 //TODO: QR Code Scanner
 //TODO: Tutorial Screen
 //TODO: APIs (Especially Facebook)
@@ -27,12 +26,11 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-
-//    storage.isReady().then((data) {
-//      setState(() {
-//        data ? list = storage.getItem() : list = {};
-//      });
-//    });
+    storage.isReady().then((data) {
+      setState(() {
+        data ? list = storage.getItem() : list = {};
+      });
+    });
   }
 
   @override
@@ -107,7 +105,8 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           if (value != null) {
                             list[value.title] = value;
-//                            storage.setItem(list);
+                            if (this.index == null) this.index = 0;
+                            storage.setItem(list);
                           }
                         });
                       });
@@ -126,7 +125,6 @@ class _MainScreenState extends State<MainScreen> {
                         : () {
                             // TODO: QR Reader
                             print("Share ${this.index}");
-//                            print(storage.toJSON(this.list));
                           },
                   ),
                 ),
