@@ -9,7 +9,7 @@ class Storage {
     return ready;
   }
 
-  toJSON(Map<String, UserData> item) {
+  toJSON(Map item) {
     Map hash = Map();
     item.forEach((k, v) {
       hash[k] = v.toJSON();
@@ -23,12 +23,18 @@ class Storage {
   }
 
   getItem() {
-    Map result = {};
     final item = storage.getItem('InstaShare_item');
     if (item != null) {
-      print(item);
+      item.forEach((k, v) {
+        item[k] = UserData(
+          imageSrc: v["imageSrc"],
+          title: v['title'],
+          account: v['account'],
+          deepLink: v['deepLink'],
+        );
+      });
     }
-    return result;
+    return item;
   }
 
 }
