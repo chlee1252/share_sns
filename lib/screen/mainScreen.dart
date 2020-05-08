@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:sharesns/storage/storage.dart';
-import 'package:sharesns/widget/circularButton.dart';
-import 'package:sharesns/widget/customFlipCard.dart';
-import 'package:sharesns/widget/customSwiper.dart';
-import 'package:sharesns/widget/slidePop.dart';
+import 'package:sharesns/widget/mainScreenWidget.dart';
 
 //TODO: QR Code Scanner
 //TODO: Tutorial Screen

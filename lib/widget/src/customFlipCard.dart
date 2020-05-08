@@ -1,6 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
-import 'package:sharesns/widget/ssnCard.dart';
+import 'package:sharesns/widget/src/ssnCard.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class CustomFlipCard extends StatelessWidget {
