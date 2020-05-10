@@ -2,8 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:sharesns/module/userData.dart';
 import 'package:sharesns/sns/snsData.dart';
-import 'package:sharesns/widget/cardButton.dart';
-import 'package:sharesns/widget/customInput.dart';
+import 'package:sharesns/widget/addScreenWidget.dart';
 
 //TODO: Add Screen design and implement
 class AddScreen extends StatefulWidget {
