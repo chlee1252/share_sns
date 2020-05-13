@@ -1,11 +1,13 @@
+//fb://profile?id=
 class Data {
+  static const preURL = "https://share-sns.herokuapp.com";
   static const SNSData = {
     "Facebook": {
-      "deeplink": "fb://profile?id=",
+      "deeplink": "$preURL/facebook/",
       "image": "asset/facebook.jpeg",
     },
     "Instagram": {
-      "deeplink": "instagram://user?username=",
+      "deeplink": "$preURL/instagram/",
       "image": "asset/instagram.jpeg",
     },
     "Phone": {
@@ -17,8 +19,12 @@ class Data {
       "image": "asset/email.jpeg",
     },
     "Snapchat": {
-      "deeplink": "snapchat://add/",
+      "deeplink": "$preURL/snapchat/",
       "image": "asset/snapchat.jpeg",
+    },
+    "All": {
+      "deeplink": "",
+      "image": "",
     },
   };
 }
