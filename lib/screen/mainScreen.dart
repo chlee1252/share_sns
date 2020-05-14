@@ -16,7 +16,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   Map list = {};
-  int index;
   bool tutorial = true;
   Storage storage = new Storage();
 
@@ -26,7 +25,6 @@ class _MainScreenState extends State<MainScreen> {
     storage.isReady().then((data) {
       setState(() {
         data ? list = storage.getItem() : list = {};
-        if (list.isNotEmpty) index = 0;
       });
     });
   }
@@ -65,11 +63,6 @@ class _MainScreenState extends State<MainScreen> {
                             deepLink: current.deepLink,
                           );
                         },
-                        onIndexChanged: (index) {
-                          setState(() {
-                            this.index = index;
-                          });
-                        },
                         scale: 0.5,
                         viewportFraction: 0.5,
                         itemWidth: MediaQuery.of(context).size.width * 0.8,
@@ -103,7 +96,6 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           if (value != null) {
                             list[value.title] = value;
-                            if (this.index == null) this.index = 0;
                             storage.setItem(list);
                           }
                         });
@@ -118,12 +110,9 @@ class _MainScreenState extends State<MainScreen> {
                   child: CircularButton(
                     title: "Share",
                     color: Colors.white,
-                    onPressed: this.index == null
-                        ? null
-                        : () {
-                            print("Share ${this.index}");
-                            storage.clearItem();
-                          },
+                    onPressed: () {
+                      storage.clearItem();
+                    }
                   ),
                 ),
               ],
