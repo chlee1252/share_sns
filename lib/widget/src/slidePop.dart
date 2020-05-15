@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sharesns/screen/addScreen.dart';
+import 'package:sharesns/screen/facebookAddScreen.dart';
 import 'package:sharesns/sns/snsData.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 
@@ -22,16 +23,29 @@ showSlideDialog(BuildContext context) async {
                 child: ListTile(
                   title: Center(child: Text(current)),
                   onTap: () async {
-                    final data = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return AddScreen(
-                            title: current,
-                          );
-                        },
-                      ),
-                    );
+                    //TODO: Temp!!!
+                    var data;
+                    if (current == 'Facebook') {
+                      data = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return FacebookAddScreen();
+                          },
+                        ),
+                      );
+                    } else {
+                      data = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return AddScreen(
+                              title: current,
+                            );
+                          },
+                        ),
+                      );
+                    }
                     Navigator.pop(context, data);
                   },
                 ),

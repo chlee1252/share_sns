@@ -35,6 +35,8 @@ dependencies:
   slide_popup_dialog: ^0.0.2
   flutter_bloc: ^4.0.0
   email_validator: ^1.0.4
+  flutter_facebook_login: ^3.0.0
+  http: ^0.12.1
 
 dev_dependencies:
   flutter_test:
