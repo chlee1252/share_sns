@@ -3,9 +3,8 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:sharesns/storage/storage.dart';
 import 'package:sharesns/widget/mainScreenWidget.dart';
 
-//TODO: QR Code Scanner
 //TODO: Tutorial Screen
-//TODO: APIs (Especially Facebook)
+//TODO: APIs (Especially Facebook) -> Way to redirect facebook App
 //TODO: All Share Method
 
 class MainScreen extends StatefulWidget {
