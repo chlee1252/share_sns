@@ -10,6 +10,8 @@ class FacebookAddScreen extends StatefulWidget {
   _FacebookAddScreenState createState() => _FacebookAddScreenState();
 }
 
+// TODO: link or user input link..? How to convert url to applink
+
 class _FacebookAddScreenState extends State<FacebookAddScreen> {
   @override
   Widget build(BuildContext context) {
