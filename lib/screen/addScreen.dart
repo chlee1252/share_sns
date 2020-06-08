@@ -7,10 +7,11 @@ import 'package:sharesns/sns/snsData.dart';
 import 'package:sharesns/widget/addScreenWidget.dart';
 
 //TODO: Add Screen design and implement
+//TODO: Find better way to use Provider on this screen
 // ignore: must_be_immutable
 class AddScreen extends StatelessWidget {
   AddScreen({this.title});
-  
+
   static final String id = "AddScreen";
   final String title;
 
